@@ -1,0 +1,3 @@
+../image/photo/sans_credit/jpeg
+
+Changez le chemin ci dessus pour modifier le dossier de récupèration du script.

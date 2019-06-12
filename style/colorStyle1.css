@@ -1,0 +1,15 @@
+:root {
+
+	--bg-color1: #222; /* couleur du fond de section */
+	--bg-color2: #333; /* menus */
+	--bg-color3: #000; /* borders */
+	--bg-color4: #444; /* border gauche des menus */
+	--bg-color5: var(--bg-color2); /* dégradé footer */
+
+	--color1: #ea5c0d; /* titre et barre "chateau de champs" */
+	--color2: #f7af3e; /* liens cliquables */
+
+	--text-color1: #FFF; /* textes et descriptions images */
+	--text-color2: #DDD; /* texte du menu */
+	--title-color1: var(--text-color1); /* titres et sous titres*/ 
+}

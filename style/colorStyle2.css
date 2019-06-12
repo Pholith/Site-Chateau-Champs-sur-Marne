@@ -1,0 +1,16 @@
+:root {
+	
+	--bg-color1: #FAFAFA;
+	--bg-color2: #304841;
+	--bg-color3: #22332E;
+	--bg-color4: var(--bg-color3);
+	--bg-color5: #AAA;
+
+	--color1: var(--bg-color2);
+	--color2: #379479;
+
+
+	--text-color1: black;
+	--text-color2: white;
+	--title-color1: white;
+}

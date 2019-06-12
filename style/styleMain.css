@@ -1,0 +1,1584 @@
+
+
+
+
+
+@font-face {
+	font-family: "Dyno";
+	src: url('fonts/Dyno_Regular.ttf');
+}
+
+@font-face {
+	font-family: "Fina";
+	src: url('fonts/Cicle Fina.ttf');
+}
+
+
+/* Variables pour le CSS */
+* {
+	/* Pour éviter une ligne blanche en haut de la page */
+	padding: 0;
+	margin: 0;
+	font-family: Fina, Tahoma, Helvetica, "Trebuchet MS", arial;
+	color:#FFF;
+	color: var(--text-color1);
+}
+
+html,
+body {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	/* Pour éviter une ligne blanche en haut de la page */
+	padding: 0;
+	margin: 0;
+	height: auto;
+	background-color:#222;
+	background-color: var(--bg-color1);
+	overflow-x: hidden;
+	
+}
+
+
+/* Le "chateau de champs sur marne" du header*/
+h1,
+h2,
+h3,
+h4 {
+	font-family: Dyno, Tahoma, Helvetica, "Trebuchet MS", arial;
+}
+
+h1 {
+	/* TODO: changer la police */
+	background-color:#ea5c0d;
+	background-color: var(--color1);
+	color:#FFF;
+	color: var(--title-color1);
+	text-transform: uppercase;
+	/*majuscule*/
+	text-align: center;
+	padding: 6px 0px 6px 0px;
+	margin-top: -4px;
+	margin-bottom: 0;
+	font-size: xx-large;
+}
+
+h2 {
+	/* Les blocs oranges avec du texte blanc pour les catégories */
+	font-size: xx-large;
+	margin: 3% 0 2% 0;
+	color:#FFF;
+	color: var(--title-color1);
+	/* arrière plan */
+	background-color:#ea5c0d;
+	background-color: var(--color1);
+	padding: 10px 10px 10px 10px;
+	border-radius: 4px;
+	/* Pour changer le width automatiquement en fonction du texte*/
+	cursor: pointer;
+	display: table;
+	/* Décalage un peu à droite */
+	z-index: 1;
+}
+
+h3 {
+	/* Les gros titres */
+	color:#FFF;
+	color: var(--text-color1);
+	text-transform: uppercase;
+	/*majuscule*/
+	/* centrer le titre */
+	margin-right: 6%;
+}
+
+h4 {
+	/* Les moyen titres */
+	text-transform: uppercase;
+	/*majuscule*/
+	color:#FFF;
+	color: var(--title-color1);
+}
+
+p,
+ul li,
+a {
+	font-size: x-large;
+}
+
+em {
+	font-weight: bold;
+}
+
+table {
+	border: 3px solid var(--text-color1);
+	border-collapse: collapse;
+	width: 50%;
+	margin: auto;
+}
+
+th {
+	border: 1px dotted var(--text-color1);
+	font-size: x-large;
+	padding: 5px;
+	width: 25%;
+}
+
+td {
+	font-size: large;
+	border: 1px solid var(--text-color1);
+	padding: 5px;
+}
+
+
+/* ====== Propriété pour la mise en place du menu sans style =======*/
+
+nav ul,
+nav ul ul {
+	/* pour effacer les puces des menus et sous menus*/
+	list-style: none;
+}
+
+nav ul li {
+
+	/* la position des menus dépend de celle de l'autre */
+	position: relative;
+}
+
+nav ul a {
+
+
+	/* la position du lien des menus */
+	display: block;
+
+	/* Aération des titre */
+	padding-top: 3vh;
+	padding-bottom: 3vh;
+
+	text-align: center;
+}
+
+@media all and (orientation: landscape) {
+	nav ul li ul {
+		/* Pour effacer les sous menus par défaut */
+		display: block;
+		position: absolute;
+		top: 0px;
+		left: 0%;
+		z-index: 99;
+		pointer-events: none;
+		opacity: 0;
+		visibility: hidden;
+		transition: visibility 0.2s ease, opacity 0.2s ease, left 0.5s ease;
+	}
+	nav ul li:hover ul {
+		/* mise en forme des sous-menus lorsque le menu est survolée*/
+		display: block;
+		position: absolute;
+		top: 0px;
+		left: 100%;
+		z-index: 99;
+		pointer-events: auto;
+		opacity: 1;
+		visibility: visible;
+		transition: visibility 0.3s ease, opacity 0.3s ease, left 0.3s ease;
+	}
+}
+
+
+/* ================================================*/
+
+
+/* ====== Style du menu, séparé de sa structure pour plus de compréhension*/
+
+nav {
+	top: 0;
+	left: 0;
+	background-color:#333;
+	background-color: var(--bg-color2);
+	width: 201px;
+	height: 100%;
+	position: fixed;
+	/* le menu ne bouge pas*/
+	z-index: 100;
+	/* pour rester devant */
+}
+
+nav ul a {
+	/* style de tout les liens du menu */
+	color:#DDD;
+	color: var(--text-color2);
+}
+
+nav ul ul li a {
+	/* Les liens des sous menus */
+	color:#DDD;
+	color: var(--text-color2);
+}
+
+nav ul ul li {
+	background-color:#333;
+	background-color: var(--bg-color2);
+	/* Couleur d'arriere-plan des sous-menu */
+	width: 300px;
+}
+
+nav ul ul li:hover {
+	background-color:#444;
+	background-color: var(--bg-color4);
+	/* Couleur d'arriere-plan des sous-menu au survol */
+}
+
+nav ul li:hover {
+	background-color:#444;
+	background-color: var(--bg-color4);
+	/* Couleur d'arriere-plan du menu au survol */
+}
+
+
+/* Les bordures des menus sans sélectionner les sous menus */
+
+nav > ul li {
+	border-bottom: 1px solid var(--bg-color3);
+	border-left: 10px solid var(--bg-color4);
+	/* 505050 */
+}
+
+#first {
+	/* Pour que le menu Accueil aussi ait une barre en haut*/
+	border-top: 1px solid var(--bg-color3);
+}
+
+div.toolbar {
+	position: fixed;
+	top: 0;
+	left: 201px;
+	width: 100%;
+	height: 20px;
+}
+
+div.toolbar button {
+	font-size: 26px;
+}
+
+/* Le CSS de la barre de langue */
+
+.languagepicker {
+	background-color:#333;
+	background-color: var(--bg-color2);
+	display: inline-block;
+	padding: 0;
+	height: 40px;
+	overflow: hidden;
+	transition: all .3s ease;
+	margin: 0 0px 10px 0;
+	vertical-align: top;
+	float: left;
+	border-left: 2px solid var(--bg-color3);
+
+	text-align: center;
+
+}
+
+
+.languagepicker:hover{
+	/* don't forget the 1px border */
+	height: 121px;
+}
+
+
+.themepicker button:hover {
+	background-color:#000;
+	background-color: var(--bg-color3);
+}
+
+
+.languagepicker a {
+	text-decoration: none;
+}
+
+.languagepicker li {
+	display: block;
+	padding: 0px 20px;
+	line-height: 40px;
+	color:#FFF;
+	color: var(--title-color1);
+}
+
+
+.themepicker:hover {
+	height: 96px;
+}
+
+
+.themepicker button{
+	width: 100%;
+	height: 100%;
+
+}
+
+
+.themepicker li {
+	padding:0;
+}
+
+
+
+
+.languagepicker li:hover {
+	background-color:#000;
+	background-color: var(--bg-color3);
+}
+
+.languagepicker li img {
+	margin-right: 5px;
+	height: 0.8em;
+}
+
+
+
+.colorPicker:active {
+	background-color:#000;
+	background-color: var(--bg-color3);
+}
+
+.colorPicker {
+	font-size: 1.4em;
+	display: inline-block;
+	padding: 0;
+	height: 40px;
+	overflow: hidden;
+	transition: all .3s ease;
+	padding: 0 20px 0 20px;
+	vertical-align: top;
+	float: left;
+	border-radius: 0;
+	border-width: 0;
+	background-color:#333;
+	background-color: var(--bg-color2);
+	color:#FFF;
+	color: var(--title-color1);
+}
+
+.roundborders {
+	border-radius: 5px;
+}
+
+.large:hover {
+	/* 
+	don't forget the 1px border!
+	The first language is 40px heigh, 
+	the others are 41px
+	*/
+	height: 245px;
+}
+
+
+/* ================================================*/
+
+header {
+	width: 100%;
+	text-decoration: none;
+	/*place verticale atribuée à l'image*/
+	padding-top: 42%;
+}
+
+header div.background-image {
+	/*container de l'arriere plan*/
+	/*mettre à l'arrière plan*/
+	z-index: -1;
+	position: fixed;
+	width: 100%;
+	left: 201px;
+	/* pour centrer le header */
+}
+
+header div.background-image img {
+	/* pas bouger */
+	position: fixed;
+	/*decaler l'image en haut de la page. Un peu plus en haut que 0 pour mieux la voir */
+	top: -5em;
+	/* pour que l'image s'adapte à la page*/
+	width: calc(100% - 201px);
+}
+
+#logo {
+	position: fixed;
+	top: 10px;
+	right: 0%;
+	/* pour que l'image s'adapte à la page*/
+	height: 4em;
+	width: auto;
+}
+
+#streetMap {
+	padding-top: 20px;
+	padding-bottom: 20px;
+
+	width: 100%;
+}
+#streetMap iframe {
+	width: 100%;
+	min-width: 100%;
+}
+
+footer {
+	display: flex;
+
+	width: 100%;
+	height: auto;
+	/* flex box horizontalement */
+	flex-direction: column;
+	justify-content: space-evenly;
+	/* Le dégradé */
+	background:#222;
+	background: var(--bg-color1);
+	background: -moz-linear-gradient(top, var(--bg-color1) 0%, var(--bg-color5) 100%, var(--bg-color5) 100%);
+	background: -webkit-linear-gradient(top, var(--bg-color1) 0%, var(--bg-color5) 100%, var(--bg-color5) 100%);
+	background: linear-gradient(to bottom, var(--bg-color1) 0%, var(--bg-color5) 100%, var(--bg-color5) 100%);
+	border-top: 1px solid var(--color1);
+}
+
+
+
+
+footer table {
+	border: none;
+	width: 90%;
+	height: 100px;
+	text-align: center;
+}
+
+
+footer .to_center{
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	height: 80px;
+
+	margin-bottom: 30px;
+	margin-top: 30px;
+
+}
+
+footer .to_center>div{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	text-align: center;
+	
+	margin-bottom: auto;
+	height: 100%;
+}
+
+footer .to_center>div a{
+	text-transform: capitalize;
+	/* majuscule auto */
+}
+
+
+footer table td {
+	border: none;
+}
+
+
+footer .sociaux tr {
+	border-bottom: 1px solid var(--color1);
+	width: 100%;
+}
+footer .sociaux tr img {
+	height: 50px;
+}
+
+@media (max-width: 1200px) {
+	footer .to_center{
+		width: 70%;
+	}
+}
+
+@media (min-width: 1200px) {
+
+
+
+	footer .logo_table{
+		justify-content: space-between;
+		height: 70px;
+	}
+
+
+	footer .logo_table tr{
+		display: inline-flex;
+		justify-content: space-between;
+		width: 50%;
+	}
+
+	footer .logo_table tr td{
+		display: inline-flex;
+		justify-content: center;
+		width: 33%;
+	}
+
+
+}
+
+
+
+
+footer table a img {
+	padding: 0.3em 0 0 0;
+	height: 1.8em;
+	width: auto;
+}
+
+/* ==== Le contenu principal de chaque page ==== */
+
+section {
+	
+
+	background-color:#222;
+	background-color: var(--bg-color1);
+	/* pour corriger la bordure entre le h1 et la section*/
+	position: relative;
+	padding-top: 3em;
+	top: -0em;
+	/* Un peu de marge pour le contenu */
+	padding-bottom: 5%;
+	/* Centrage du contenu */
+	padding-left: 6%;
+	padding-right: 6%;
+	/* Taille des section */
+	max-width: calc(100vw - 201px);
+	z-index: 0;
+	/* passe derrière la barre h1 */
+}
+
+section div {
+	/* Marge entre le contenu */
+	padding-bottom: 2%;
+}
+
+p {
+	line-height: 1.3em;
+	color:#FFF;
+	color: var(--text-color1);
+}
+
+hr {
+	/* Pour aérer le texte autour des lignes horizontals */
+	width: 98%;
+	/* marge autour de la ligne */
+	margin-top: 1.1em;
+	margin-bottom: 1.5em;
+}
+
+a {
+	text-decoration-line: none;
+	/* pour retirer le souslignage*/
+	color:#f7af3e;
+	color: var(--color2);
+}
+
+#main {
+	width: calc(100% - 201px);
+	/* pour compenser le décalage et pas dépasser les 100% */
+	margin-left: 201px;
+	/* décalage du main de la taille du menu vers la droite*/
+}
+
+.right {
+	/* pour le texte à aligner à droite */
+	text-align: right;
+	margin-right: 1.8em;
+}
+
+.menu-checkbox {
+	/* Pour cacher la checkbox sur pc */
+	visibility: hidden;
+	display: none;
+}
+
+.menu-toggle {
+	visibility: hidden;
+	display: none;
+}
+
+
+/* Gestion du contenu des titres */
+
+.active {
+	/* on cache toutes les balises de cette classe là */
+	/*display: none !important ;*/
+	display: none !important;
+}
+
+.contenuTitre2 {
+	margin: 0;
+	padding: 0;
+	/* Aération entre les blocs */
+	/* A modifier */
+	margin-top: 1em;
+	margin-bottom: 1em;
+	width: 100%;
+	/*Alignement vertical*/
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	/*Centrage vertical*/
+	align-items: top;
+	/*Aller à la ligne*/
+	flex-wrap: wrap;
+}
+
+.contenuTitre2 div {
+	padding: 1px;
+	width: 45%;
+}
+
+.contenuTitre2 img {
+	min-height: 100px;
+	min-width: 100px;
+	height: auto;
+	border-radius:5px;
+}
+
+
+.contenuTitre2>p,
+.contenuTitre2 ul,
+.contenuTitre2 img {
+	/* Les balises p sans contenu en savoir plus */
+	width: 45%;
+	/* pour que ce soit pile aligné */
+}
+
+
+
+
+.contenuTitre2 p {
+	/* obsolument toutes les balises p de la page */
+	text-align: justify;
+	padding: 0%;
+}
+
+.contenuTitre2 figure {
+	width: 45%;
+	text-align: center;
+	display: block;
+}
+
+
+/*Les images en libertés dans les div .contenuTitre2 */
+
+.contenuTitre2>img {
+	height: 45%;
+	margin-bottom: 30px;
+}
+
+.contenuTitre2 figure img {
+	width: 100%;
+	padding: 0;
+	padding-top: 5px;
+	display: block;
+	padding-bottom: 1%;
+	border-bottom: 1px solid var(--text-color1);
+
+}
+
+.contenuTitre2 figure figcaption {
+	padding-top: 0.5%;
+	margin: 0;
+	width: 100%;
+	text-align: center;
+	font-size: large;
+	color:#FFF;
+	color: var(--text-color1);
+	font-style: italic;
+}
+
+.tarif {
+	/* Les tarifs de la page des tarifs */
+	text-transform: uppercase;
+	/*majuscule*/
+	font-weight: bold;
+}
+
+
+
+
+/*
+/* La page Qui Sommes nous ? */
+
+.quisommesnous {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.quisommesnous figure a img {
+	width: 100%;
+	max-width: 400px;
+}
+
+.quisommesnous figcaption {
+	width: 90%;
+	word-wrap: auto;
+}
+
+.quisommesnous figure a img {
+	width: 90%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	-webkit-border-radius: 40px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.quisommesnous figure {
+	width: 30%;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+
+/* === Le bouton en savoir plus === */
+
+div p.contenuPlus {
+	opacity: 0;	
+	transform: translate(-20px, 0px);
+	visibility: hidden;
+	transition: all 0.5s;
+}
+
+div p.visible {
+	opacity: 1;
+	transform: translate(0px, 0px);
+	visibility: visible;
+}
+
+
+
+
+
+
+button.enSavoirPlus {
+	display: inline-block;
+	border-radius: 2px;
+	background-color:#ea5c0d;
+	background-color: var(--color1);
+	border: none;
+	color:#DDD;
+	color: var(--text-color2);
+	opacity: 0.7;
+	text-align: center;
+	font-size: 20px;
+	padding: 5px;
+	width: 10em;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin-top: 2%;
+}
+
+
+
+button.enSavoirPlus span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+button.enSavoirPlus span:after {
+	content: '\00bb';
+	position: relative;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: width 2s, height 2s, background-color 2s, transform 2s;
+}
+
+button.enSavoirPlus:hover span {
+	padding-right: 10px;
+	padding-left: 15px;
+}
+
+button.enSavoirPlus:hover span:after {
+	opacity: 1;
+	right: 0;
+}
+
+div#searchBar {
+	background-color:#444;
+	background-color: var(--bg-color4);
+	padding: 10px 10px 10px 10px;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	font-size: 1.3em;
+}
+div#searchBar form {
+	color:#FFF;
+	color: var(--title-color1);
+}
+
+
+/* ======================= Gestion de la frise chronologique =========================== */
+
+.time_line {
+	padding: 0 0;
+	margin-top: 100px;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.tl_elem {
+	min-width: 400px;
+	max-width: 400px;
+	min-height: 200px;
+	position: relative;
+	width: 30%;
+	/*
+	border-style: solid;
+	border-width: 1px;
+	border-color: white;
+	*/
+	display: inline-flex;
+	flex-direction: row;
+	vertical-align: middle;
+	justify-content: space-between;
+	align-items: center;
+	/* "valign" */
+}
+
+.tl_elem>h3,
+.tl_elem>p {
+	max-width: 150px;
+	min-width: 150px;
+	word-wrap: auto;
+}
+
+
+/* Ligne verticale de la timeline*/
+
+.tl_elem .tl_vline {
+	position: absolute;
+	background-color:#ea5c0d;
+	background-color: var(--color1);
+	left: calc(50% - 4px);
+	top: -125px;
+	width: 8px;
+	min-height: 250px;
+	z-index: -1;
+}
+
+
+/* Ligne verticale dégradée de la timeline*/
+
+.tl_elem .top_line {
+	background-image: linear-gradient(to top, var(--color1) 75%, var(--bg-color1));
+}
+
+
+/* Ligne verticale dégradée de la timeline*/
+
+.tl_elem .bottom_line {
+	background-image: linear-gradient(to bottom, var(--color1) 75%, var(--bg-color1));
+}
+
+
+/* Les boules cliquables de la timeline */
+
+.tl_elem span {
+	position: relative;
+	max-width: 60px;
+	min-width: 60px;
+	height: 60px;
+	width: 60px;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+	border-radius: 50%;
+	display: inline-block;
+	background-color:#ea5c0d;
+	background-color: var(--color1);
+	cursor: pointer;
+}
+
+.tl_elem span:before {
+	display: inline-block;
+	position: absolute;
+	content: ' ';
+	font: 0/0 sans-serif;
+	width: 0%;
+	height: 0%;
+	top: 50%;
+	left: 50%;
+	background-color:#FFF;
+	background-color: var(--text-color1);
+	border-radius: 50%;
+	transition: all 0.25s ease-in-out;
+}
+
+.tl_elem span:hover:before {
+	width: 50%;
+	height: 50%;
+	top: 25%;
+	left: 25%;
+}
+
+.tl_elem span.scrolled_to:before {
+	display: inline-block;
+	position: absolute;
+	content: ' ';
+	font: 0/0 sans-serif;
+	width: 75%;
+	height: 75%;
+	top: 12.5%;
+	left: 12.5%;
+	background-color:#FFF;
+	background-color: var(--text-color1);
+	border-radius: 50%;
+	transition: all 0.25s ease-in-out;
+}
+
+.tl_elem time {
+	font-size: x-large;
+	padding-bottom: 50px;
+	border-top: 2px solid var(--color1);
+	text-align: center;
+	padding-top: 0px;
+}
+
+.tl_elem h3 {
+	font-size: x-large;
+	font-weight: normal;
+	margin: 0;
+	text-align: center;
+	text-transform: none;
+	padding-bottom: 0px;
+	color:#FFF;
+	color: var(--text-color1);
+}
+
+
+/* Les panneaux informatifs de la timeline*/
+
+.tl_info {
+	background-color:#222;
+	background-color: var(--bg-color1);
+	position: absolute;
+	display: inline-block;
+	min-width: 400px;
+	max-width: 30vw;
+	right: -45vw;
+	border: 2px solid var(--text-color1);
+	font-size: x-large;
+	padding: 10px;
+	transition: all 0.5s ease;
+	z-index: 3;
+}
+
+.tl_info input {
+	display: block;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+/*Quand les panneaux sont masqués*/
+
+.tl_info_invisible {
+	visibility: hidden;
+	opacity: 0;
+	transform: scaleX(0);
+}
+
+
+/*Quand les panneaux sont visibles*/
+
+.tl_info_visible {
+	visibility: visible;
+	opacity: 1;
+	transform: scaleX(1);
+}
+
+
+/* Modifier l'affichage quand l'écran est trop petit*/
+
+@media (max-width: 1200px) {
+	.tl_info {
+		left: 0;
+		right: 0;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.tl_elem {
+		margin-left: auto;
+		margin-right: auto;
+		min-width: 90%;
+		max-width: 90%;
+	}
+}
+
+#tl_text {
+	border: 2px solid var(--text-color1);
+	font-size: x-large;
+	margin: auto;
+	width: 60%;
+	text-align: center;
+	padding: 10px;
+}
+
+
+/* Fin de la frise */
+
+.credit {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.credit a {
+	width: 45%;
+	border-radius: 5px;
+	padding: 0.5em 1em 10px 1em;
+	background-color:#333;
+	background-color: var(--bg-color2);
+	text-align: center;
+	display: block;
+}
+
+.credit a img {
+	padding: 0;
+	padding-top: 10px;
+	width: 100%;
+	height: 85%;
+	display: block;
+	/* hover sur les images */
+	transition: all 0.3s ease;
+}
+
+.credit a img:hover {
+	/* transition de changement de taille */
+	-webkit-transform: scale(0.9);
+	-ms-transform: scale(0.9);
+	transform: scale(0.9);
+	transition: all 0.3s ease;
+}
+
+.admin-choice tr td {
+	border: none;
+}
+
+table.admin-choice {
+	border: none;
+}
+
+.admin-choice input,
+input,
+select {
+	padding: 5px 10px 5px 10px;
+	margin: 1px;
+	background-color:#333;
+	background-color: var(--bg-color2);
+	border-color:#444;
+	border-color: var(--bg-color4);
+	color:#DDD;
+	color: var(--text-color2);
+	font-size: 1.2em;
+}
+
+.admin-choice .generatedInput {
+	max-width: 30em;
+}
+
+
+/* Quiz */
+
+form div {
+	border: none;
+	border-left: 1px solid white;
+	margin-bottom: 30px;
+}
+
+legend {
+	border-bottom: 1px solid white;
+	font-size: x-large;
+	margin-left: 10px;
+	padding-bottom: 5px;
+	margin-bottom: 20px;
+}
+
+input[type=radio] {
+	display: none;
+}
+
+form label {
+	margin-bottom: 50px;
+	font-style: italic;
+	cursor: pointer;
+}
+
+
+/* Par defaut */
+
+input[type=radio]+label:before {
+	background:#FFF;
+	background: var(--text-color1);
+	border: 1.5px solid var(--text-color2);
+	border-radius: 50%;
+	margin-right: 6px;
+	margin-left: 20px;
+	display: inline-block;
+	content: '';
+	width: 8px;
+	height: 8px;
+}
+
+
+/* Selection */
+
+input[type=radio]:checked+label:before {
+	background:#ea5c0d;
+	background: var(--color1);
+	border-color:#FFF;
+	border-color: var(--text-color1);
+}
+
+input[type=radio]:checked+label {
+	color:#ea5c0d;
+	color: var(--color1);
+	margin-left: 10px;
+	transition: 1s;
+}
+
+#form-send {
+	padding: 10px;
+	border-radius: 10px;
+	color: black;
+}
+
+#form-send:hover {
+	margin-left: 20px;
+	background:#ea5c0d;
+	background: var(--color1);
+	color:#FFF;
+	color: var(--text-color1);
+	opacity: 0.7;
+	transition: 1s;
+}
+
+
+/* CSS POUR LE SLIDER TEXTUEL */
+
+.slideshow_container {
+	position: relative;
+	min-height: 150px;
+
+	background:#333;
+	background: var(--bg-color2);
+
+	flex-direction: row;
+	vertical-align: middle;
+	justify-content: space-around;
+	align-items: center;
+
+}
+
+
+/* Slides */
+
+.slider_elem {
+
+	margin: auto;
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+
+	margin-top: 3vw;
+
+	max-width: 75%;
+
+	word-wrap: auto;
+	text-align: center;
+
+
+
+	opacity: 0;	
+	transform: translate(-20px, 0px);
+	visibility: hidden;
+	transition: all 0.5s;
+
+
+}
+
+
+.slider_elem.visible {
+	opacity: 1;
+	transform: translate(0px, 0px);
+	visibility: visible;
+}
+
+
+
+/* Next & slide_previous buttons */
+
+.slide_prev,
+.slide_next {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	margin-top: -30px;
+	padding: 16px;
+	color:#DDD;
+	color: var(--text-color2);
+	font-weight: bold;
+	font-size: 20px;
+	border-radius: 0 3px 3px 0;
+	user-select: none;
+	transition: all 0.25s ease;
+}
+
+
+/* Position the "slide_next button" to the right */
+
+.slide_next {
+	position: absolute;
+	right: 0;
+	border-radius: 3px 0 0 3px;
+}
+
+
+/* On hover, add a black background color with a little bit see-through */
+
+.slide_prev:hover,
+.slide_next:hover {
+	background-color:#ea5c0d;
+	background-color: var(--color1);
+	color:#FFF;
+	color: var(--text-color1);
+}
+
+
+/* Add an italic font style to all quotes */
+
+q {
+	font-style: italic;
+	font-size: 1.4em;
+	color:#FFF;
+	color: var(--title-color1);
+
+}
+
+
+/* Add a blue color to the author */
+
+.slider_elem p {
+	color: cornflowerblue;
+}
+
+
+/* FIN SLIDER */
+
+@media all and (orientation: portrait)
+/* pour les mobiles ou écran globalement en format portrait*/
+
+{
+	h2 {
+		left: 0;
+	}
+	/* ======================= GROSSE PARTIE DU MENU MOBILE ===========================*/
+	nav {
+		visibility: hidden;
+		opacity: 0;
+		transition: visibility 0.2s ease, opacity 0.2s ease;
+		/* pour cacher le menu par défaut */
+		display: block;
+		width: 100%;
+		/* pour prendre toute la page */
+		height: auto;
+		top: 90px;
+		/* affiche le menu juste en dessous du bouton menu */
+		position: fixed;
+		padding-top: 0px;
+	}
+	nav ul li {
+		/* la position des menus dépend de celle de l'autre */
+		/*position: initial; 
+		display: block;*/
+	}
+	nav ul a {
+		/* la position du lien des menus */
+		display: block;
+		text-align: center;
+		/* Aération du titre pour mobile */
+		padding-top: 5px;
+		padding-bottom: 5px;
+		text-align: left;
+		/*Les tailles des polices du menu mobile dependent de la taille de l'ecran,
+		 pour ne pas avoir de textes trop petit sur les tel avec de grandes resolutions*/
+		font-size: 5vh;
+
+	}
+
+
+
+
+
+	nav ul li ul {
+		/* Pour effacer les sous menus par défaut */
+		display: block;
+		position: relative;
+		top: 0;
+		pointer-events: none;
+		visibility: hidden;
+		height: auto;
+		opacity: 0;
+		left: 0;
+		max-height: 0% !important;
+		height: 0px;
+		transition: height 0.3s ease, max-height 0.3s ease, visibility 0.3s ease, opacity 0.3s ease;
+	}
+	nav ul .active_li ul {
+		/* mise en forme des sous-menus lorsque le menu est survolée*/
+		display: block;
+		pointer-events: auto;
+		visibility: visible;
+		opacity: 1;
+		height: auto;
+		position: relative;
+		left: 0;
+		height: 25vh;
+		background-color: inherit;
+		transition: height 0.3s ease, visibility 0.3s ease, opacity 0.3s ease;
+	}
+	nav ul ul li:hover {
+		background-color: inherit;
+		/* pour annuler la couleur */
+	}
+	nav>ul>li:hover {
+		background-color: inherit;
+		/* même background que son parent*/
+		border-bottom: 0px solid var(--bg-color3);
+		border: none;
+		/* Pour ne pas avoir de double bordure au même endroit*/
+		border-bottom: 1px solid var(--bg-color3);
+		border-left: 10px solid var(--bg-color4);
+	}
+	nav ul ul li {
+		background-color: inherit;
+		/* même background que son parent*/
+		border: none;
+		/* Pour ne pas avoir de double bordure au même endroit*/
+	}
+	nav ul ul li a {
+		/* pour avoir les sous menus un peu décalés */
+		display: block;
+		position: relative;
+		font-size: 4vh;
+		left: 10vw;
+		border-bottom: 0px;
+	}
+	.menu-checkbox {
+		/* Pour cacher la checkbox sur pc */
+		display: none;
+		visibility: hidden;
+		opacity: 0;
+		transition: visibility 0.2s ease, opacity 0.2s ease;
+
+
+	}
+	/* Pour grossir le bouton menu */
+	.menu-toggle h1 {
+		font-size: 4.5em;
+		padding: 0;
+		margin: 0;
+		display: absolute;
+		height: 90px;
+
+	}
+	.menu-toggle {
+		/* Le texte menu qui reste en haut de l'écran sur mobile */
+		font-family: arial;
+		display: block;
+		position: fixed;
+		top: 0px;
+		visibility: visible;
+		opacity: 1;
+		transition: visibility 0.2s ease, opacity 0.2s ease;
+		width: 100%;
+		z-index: 10;
+		padding: 0;
+		margin: 0;
+
+	}
+	.menu-checkbox:checked~nav {
+		visibility: visible;
+		opacity: 1;
+		transition: visibility 0.3s ease, opacity 0.3s ease;
+	}
+	/* On rend invisible tout sauf le menu */
+	.menu-checkbox:checked~header {
+		visibility: hidden;
+		opacity: 0;
+		transition: visibility 0.2s ease, opacity 0.2s ease;
+	}
+	.menu-checkbox:checked~section {
+		visibility: hidden;
+		opacity: 0;
+		transition: visibility 0.2s ease, opacity 0.2s ease;
+	}
+	.menu-checkbox:checked~footer {
+		visibility: hidden;
+		opacity: 0;
+		transition: visibility 0.2s ease, opacity 0.2s ease;
+	}
+	/* ======================= FIN DU MENU MOBILE ===========================*/
+	#main {
+		width: 100%;
+		/* pour annuler le décalage*/
+		margin-left: 0%;
+		/* décalage pour l'image */
+		padding-top: 150px;
+	}
+
+	header div.background-image {
+		/*container de l'arriere plan*/
+		left: 0px;
+		/* pour centrer le header */
+	}
+	header div.background-image img {
+		top: 75px;
+		/* pour que l'image s'adapte à la page*/
+		width: 100%;
+	}
+	/* Le contenu principal de chaque page */
+	section {
+		max-width: 100vw;
+		padding-left: 10%;
+		padding-right: 10%;
+
+	}
+	section div {
+		/* Marge entre le contenu */
+		padding: 0;
+	}
+	footer {
+		display: flex;
+	}
+	footer div a img {
+		height: 2.5em;
+	}
+	/* Centrage sur version mobile */
+	.credit {
+		flex-direction: column;
+	}
+	.credit a {
+		margin-top: 10px;
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+		width: 90%;
+	}
+	/* Adaptation des visites sur mobile */
+	.contenuTitre2 {
+		/* centrage sur mobile */
+		position: relative;
+	}
+	/*Les images en libertés dans les div .contenuTitre2 */
+	.contenuTitre2>img {
+		width: 100%;
+		padding-bottom: 30px;
+	}
+	.contenuTitre2 figure img {
+		width: 100%;
+		padding: 0;
+		border-bottom: 1px solid var(--bg-color3);
+	}
+	.contenuTitre2 figure figcaption {
+		padding-top: 10px;
+		margin: 0;
+		width: 100%;
+		text-align: center;
+		font-size: large;
+		font-style: italic;
+		padding-bottom: 30px;
+	}
+	.contenuTitre2 figure figcaption,
+	.contenuTitre2 p,
+	.contdenuTitre2 ul,
+	.contenuTitre2 div {
+		width: 100%;
+		/* sur mobile ça prend toute la largeur */
+	}
+	.contenuTitre2 figure,
+	.contenuTitre2 img {
+		width: 100%;
+		order: 1;
+		/* pour changer l'ordre de placement flex box */
+	}
+	.contenuTitre2 div,
+	.contenuTitre2 p {
+		order: 0;
+	}
+	.contenuTitre2 figure img {
+		width: 100%;
+		padding: 0;
+		padding-top: 10px;
+		display: block;
+	}
+	/* Bouton centré et plus large sur mobile pour pas aller à la ligne */
+	button.enSavoirPlus {
+		margin-left: 0%;
+	}
+	/* barre de langue */
+	div.toolbar {
+		position: absolute;
+		top: 90px;
+		left: 0;
+	}
+
+	div.toolbar li{
+		font-size: xx-large;
+	}
+
+
+	.quisommesnous {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	.quisommesnous figure {
+		width: 100%;
+	}
+	.tl_elem {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	div#searchBar {
+		display: flex;
+		flex-direction: column;
+	}
+
+	/* Positionnemen du clogo en bas de l'image principale de la page*/
+	#logo {		
+		top: calc(90px + 39vw);
+	}
+
+	footer .to_center{
+		width: 90%;
+	}
+
+
+}
